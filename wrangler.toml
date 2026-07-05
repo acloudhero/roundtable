@@ -1,0 +1,16 @@
+# wrangler.toml — RoundTable Cloudflare Pages hosting configuration.
+#
+# This repo is a static React/Vite PWA. Cloudflare serves the generated
+# files from dist/; it does not run Functions, Workers, model APIs,
+# databases, or background jobs for RoundTable.
+#
+# Cloudflare Pages Git integration settings:
+#   Build command: npm run build
+#   Build output directory: dist
+#
+# Direct Upload / Wrangler path:
+#   npm run build
+#   npx wrangler pages deploy dist --project-name roundtable
+
+name = "roundtable"
+pages_build_output_dir = "./dist"

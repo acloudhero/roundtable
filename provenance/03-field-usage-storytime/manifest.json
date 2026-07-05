@@ -1,0 +1,134 @@
+{
+  "artifacts": [
+    {
+      "num": 1,
+      "slug": "round23_contaminated_prompt",
+      "title": "Round 23 Generated Prompt \u2014 Contamination Evidence",
+      "status": "Evidence / do not use as active prompt",
+      "folder": "01_round23_contaminated_prompt",
+      "files": [
+        "01_round23_contaminated_prompt/RT_PROMPT_Round23_contaminated.md"
+      ],
+      "sha256": {
+        "01_round23_contaminated_prompt/RT_PROMPT_Round23_contaminated.md": "481c78dbe52ed72a0e3ee8891335571fb87c99ebf5cd848a21c18b8af5e9b19a"
+      }
+    },
+    {
+      "num": 2,
+      "slug": "gemini_review_packet_phase7c_claude_prompt",
+      "title": "Gemini Review Packet \u2014 Phase 7C Claude Amendment Prompt",
+      "status": "Prompt-review packet",
+      "folder": "02_gemini_review_packet_phase7c_claude_prompt",
+      "files": [
+        "02_gemini_review_packet_phase7c_claude_prompt/GEMINI_REVIEW_Phase7C_Claude_Opus_Amendment_Prompt.md"
+      ],
+      "sha256": {
+        "02_gemini_review_packet_phase7c_claude_prompt/GEMINI_REVIEW_Phase7C_Claude_Opus_Amendment_Prompt.md": "739db727bcc63a5bff4a0b25e4e819b5ae336ccbe8102e0ba322611d721e6856"
+      }
+    },
+    {
+      "num": 3,
+      "slug": "gemini_critique_phase7c_prompt",
+      "title": "Gemini Response \u2014 Phase 7C Prompt Critique",
+      "status": "Review response / safe with minor edits",
+      "folder": "03_gemini_critique_phase7c_prompt",
+      "files": [
+        "03_gemini_critique_phase7c_prompt/GEMINI_RESPONSE_Phase7C_prompt_critique.md"
+      ],
+      "sha256": {
+        "03_gemini_critique_phase7c_prompt/GEMINI_RESPONSE_Phase7C_prompt_critique.md": "00aa67daf9c9614d69f9e38f8ca70aa25f2dc918fe37becd4d4b4eb89c82e8e4"
+      }
+    },
+    {
+      "num": 4,
+      "slug": "final_claude_phase7c_amendment_prompt",
+      "title": "Final Claude Opus Prompt \u2014 Phase 7C Architecture Baseline Amendment",
+      "status": "Final prompt sent/ready for Claude Opus",
+      "folder": "04_final_claude_phase7c_amendment_prompt",
+      "files": [
+        "04_final_claude_phase7c_amendment_prompt/CLAUDE_OPUS_Phase7C_Architecture_Baseline_Amendment_Prompt_FINAL.md"
+      ],
+      "sha256": {
+        "04_final_claude_phase7c_amendment_prompt/CLAUDE_OPUS_Phase7C_Architecture_Baseline_Amendment_Prompt_FINAL.md": "4968f63ee995c4543c907743f8bf91376938910880f6b1a5e562bebddb5fd968"
+      }
+    },
+    {
+      "num": 5,
+      "slug": "claude_phase7c_amendment_candidate_note",
+      "title": "Claude Response \u2014 Initial Phase 7C Amendment Candidate",
+      "status": "Superseded transcript artifact",
+      "folder": "05_claude_phase7c_amendment_candidate_note",
+      "files": [
+        "05_claude_phase7c_amendment_candidate_note/RT_RESPONSE_StoryTime_Phase7C_amendment_candidate_RECONSTRUCTED_NOTE.md"
+      ],
+      "sha256": {
+        "05_claude_phase7c_amendment_candidate_note/RT_RESPONSE_StoryTime_Phase7C_amendment_candidate_RECONSTRUCTED_NOTE.md": "59878edf58cb84d47d30262a672f32ec1943d3a0f462a09ad754d5d8a8cab72a"
+      }
+    },
+    {
+      "num": 6,
+      "slug": "gemini_critique_phase7c_amendment",
+      "title": "Gemini Response \u2014 Phase 7C Amendment Candidate Critique",
+      "status": "Review response / safe with edits",
+      "folder": "06_gemini_critique_phase7c_amendment",
+      "files": [
+        "06_gemini_critique_phase7c_amendment/GEMINI_RESPONSE_Phase7C_amendment_critique_SAFE_WITH_EDITS.md"
+      ],
+      "sha256": {
+        "06_gemini_critique_phase7c_amendment/GEMINI_RESPONSE_Phase7C_amendment_critique_SAFE_WITH_EDITS.md": "997d5ee7c6c5b342cd2400fcb30cec8c13f693058acedc2f6027b4ac42300706"
+      }
+    },
+    {
+      "num": 7,
+      "slug": "claude_phase7c1_revised_amendment",
+      "title": "Claude Response \u2014 Revised Phase 7C.1 Architecture Baseline Amendment",
+      "status": "Revised candidate / lock-ready after Gemini edits",
+      "folder": "07_claude_phase7c1_revised_amendment",
+      "files": [
+        "07_claude_phase7c1_revised_amendment/RT_RESPONSE_StoryTime_Phase7C1_architecture_baseline_amendment_revised.md"
+      ],
+      "sha256": {
+        "07_claude_phase7c1_revised_amendment/RT_RESPONSE_StoryTime_Phase7C1_architecture_baseline_amendment_revised.md": "c3f1b7d1c53bd7feffdb0d9d1c5ae912e2a5e8e27d85477c70aafc57b861c8fa"
+      }
+    },
+    {
+      "num": 8,
+      "slug": "gemini_final_phase7c1_lock_review",
+      "title": "Gemini Response \u2014 Final Phase 7C.1 Lock Review",
+      "status": "Final review / safe to lock",
+      "folder": "08_gemini_final_phase7c1_lock_review",
+      "files": [
+        "08_gemini_final_phase7c1_lock_review/GEMINI_RESPONSE_Phase7C1_final_lock_review_SAFE_TO_LOCK.md"
+      ],
+      "sha256": {
+        "08_gemini_final_phase7c1_lock_review/GEMINI_RESPONSE_Phase7C1_final_lock_review_SAFE_TO_LOCK.md": "4fd977dbbd777d735fbff7ce06da9aaf0793a9f8ed4e0ab974effcd98eb1408d"
+      }
+    },
+    {
+      "num": 9,
+      "slug": "gemini_review_packet_phase7d_prompt",
+      "title": "Gemini Review Packet \u2014 Phase 7D Claude Implementation Prompt",
+      "status": "Prompt-review packet",
+      "folder": "09_gemini_review_packet_phase7d_prompt",
+      "files": [
+        "09_gemini_review_packet_phase7d_prompt/GEMINI_REVIEW_Phase7D_Claude_Implementation_Prompt.md"
+      ],
+      "sha256": {
+        "09_gemini_review_packet_phase7d_prompt/GEMINI_REVIEW_Phase7D_Claude_Implementation_Prompt.md": "fb6325a323806ca4f5575ec1eccdf169197a7752310e5f6026d81ebf8cc62d9d"
+      }
+    },
+    {
+      "num": 10,
+      "slug": "final_claude_phase7c1_implementation_prompt",
+      "title": "Final Claude Opus Prompt \u2014 Phase 7C.1 / 7D App Containerization Implementation",
+      "status": "Final implementation prompt",
+      "folder": "10_final_claude_phase7c1_implementation_prompt",
+      "files": [
+        "10_final_claude_phase7c1_implementation_prompt/CLAUDE_OPUS_Phase7C1_App_Containerization_Implementation_FINAL.md"
+      ],
+      "sha256": {
+        "10_final_claude_phase7c1_implementation_prompt/CLAUDE_OPUS_Phase7C1_App_Containerization_Implementation_FINAL.md": "9711a7238611a76adc8d91c1f71c2b73f2392a1515d2075d9ba08ad85bc3b8ea"
+      }
+    }
+  ]
+}

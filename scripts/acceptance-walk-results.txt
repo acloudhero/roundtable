@@ -1,0 +1,121 @@
+
+========================================================
+v0.11.0 Checkpoint I — Acceptance Walk Results
+========================================================
+
+✓ [PASS] C1: Same-source guarantee
+    ✓ fullText starts with frontmatter delimiter
+    ✓ fullText contains the canonical separator (---\n\n)
+    ✓ fullText ends exactly with the normalized body
+    ✓ frontmatter.artifact_type is locked (roundtable.markdown.v1)
+    ✓ frontmatter.generated_by is "roundtable" (trust anchor)
+    ✓ recomputed content_hash matches frontmatter content_hash
+    ✓ two builds with pinned id/timestamp produce byte-identical fullText
+
+✓ [PASS] C2: Round-trip integrity for all artifact source kinds
+    ✓ generated_prompt: zero errors on round-trip (got 0)
+    ✓ generated_prompt: recomputed content_hash equals frontmatter content_hash
+    ✓ generated_prompt: no POTENTIALLY_TRUNCATED on clean round-trip
+    ✓ generated_prompt: no UNCLOSED_CODE_FENCE on clean round-trip
+    ✓ model_response: zero errors on round-trip (got 0)
+    ✓ model_response: recomputed content_hash equals frontmatter content_hash
+    ✓ model_response: no POTENTIALLY_TRUNCATED on clean round-trip
+    ✓ model_response: no UNCLOSED_CODE_FENCE on clean round-trip
+    ✓ mediator_packet: zero errors on round-trip (got 0)
+    ✓ mediator_packet: recomputed content_hash equals frontmatter content_hash
+    ✓ mediator_packet: no POTENTIALLY_TRUNCATED on clean round-trip
+    ✓ mediator_packet: no UNCLOSED_CODE_FENCE on clean round-trip
+    ✓ mediator_synthesis: zero errors on round-trip (got 0)
+    ✓ mediator_synthesis: recomputed content_hash equals frontmatter content_hash
+    ✓ mediator_synthesis: no POTENTIALLY_TRUNCATED on clean round-trip
+    ✓ mediator_synthesis: no UNCLOSED_CODE_FENCE on clean round-trip
+    ✓ raw_notes: zero errors on round-trip (got 0)
+    ✓ raw_notes: recomputed content_hash equals frontmatter content_hash
+    ✓ raw_notes: no POTENTIALLY_TRUNCATED on clean round-trip
+    ✓ raw_notes: no UNCLOSED_CODE_FENCE on clean round-trip
+
+✓ [PASS] C3: Stale canonical-state detection
+    ✓ staleness check returned a warning
+    ✓ warning code is CANONICAL_STATE_HASH_MISMATCH
+    ✓ same state produces no staleness warning
+
+✓ [PASS] C4: Stale prompt detection
+    ✓ model_response artifact carries a prompt_hash
+    ✓ prompt staleness check returned a warning
+    ✓ warning code is PROMPT_HASH_MISMATCH
+    ✓ same state produces no prompt staleness
+
+✓ [PASS] C5: Post-export edit detection
+    edited body produced 2 warnings
+    ✓ CONTENT_HASH_MISMATCH emitted
+
+✓ [PASS] C6: Malformed YAML to Raw Notes
+    ✓ import_as_raw is available
+    ✓ commit is NOT available
+    ✓ default outcome is import_as_raw
+    ✓ FRONTMATTER_PARSE_FAILED warning surfaced
+    ✓ no-frontmatter file emits NO_FRONTMATTER
+    ✓ no-frontmatter file defaults to import_as_raw
+
+✓ [PASS] C7: Truncated body to Raw Notes / partial warning
+    ✓ UNCLOSED_CODE_FENCE warning surfaced for truncated body
+    ✓ POTENTIALLY_TRUNCATED emitted for non-terminator end-of-body
+
+✓ [PASS] C8: Code-fence-aware extraction
+    ✓ risks field captured the outside-fence section (got: "The actual Risks section content."...)
+    ✓ risks field does NOT include the inside-fence fake heading body
+
+✓ [PASS] C9: CRLF/LF stability
+    ✓ CRLF input produces the same content_hash as LF input
+    ✓ no CONTENT_HASH_MISMATCH after CRLF conversion
+    ✓ leading BOM produces the same content_hash
+
+✓ [PASS] C10: Rollback restores state
+    ✓ response body was replaced by the import
+    ✓ importHistory has 1 transaction after commit
+    ✓ transaction snapshotBefore captured the pre-import round
+    ✓ rollback restored the original response body
+    ✓ transaction now carries rolledBackAt
+    ✓ rollback reason is preserved
+
+✓ [PASS] C11: No silent data loss
+    ✓ no-frontmatter file produced 1 raw note
+    ✓ raw note body is preserved VERBATIM (no normalization)
+    ✓ no-frontmatter status = malformed
+    ✓ unknown artifact_type still has import_as_raw available
+    ✓ unknown artifact body preserved in Raw Notes
+
+✓ [PASS] C12: Forward-schema rejection preserved
+    ✓ UNSUPPORTED_SCHEMA_VERSION error emitted for future schema
+    ✓ commit not available for future schema
+    ✓ import_as_raw still available for future schema
+
+✓ [PASS] C13: Migration safety
+    ✓ migration added rawNotes = []
+    ✓ migration added importHistory = []
+    ✓ migration target version is 0.11.0
+    ✓ rawNotes addition produced a notice
+    ✓ importHistory addition produced a notice
+    ✓ migration is idempotent for rawNotes
+    ✓ migration is idempotent for importHistory
+    ✓ migration preserves existing rawNotes
+
+✓ [PASS] C14: No new network surfaces
+    ✓ In-process: all v0.11.0 utilities execute against fixtures with no I/O.
+    ✓ Authoritative grep (run by shell wrapper) confirmed no fetch / XHR / WebSocket / EventSource / RTCPeerConnection / sendBeacon usage in src/.
+
+✓ [PASS] C15: Existing v0.10.5 workflows unaffected
+    ✓ migrated schemaVersion is current
+    ✓ migrated rounds preserved
+    ✓ migrated modelProfiles preserved
+    ✓ promptWrappers field still present
+    ✓ v0.10.5-era synthesis body still imports cleanly
+
+--------------------------------------------------------
+Ancillary checks: Raw Notes ring buffer
+    ✓ raw notes capped at 200 (got 200)
+    ✓ oldest entries pruned
+    ✓ removeRawNote removes exactly one note
+--------------------------------------------------------
+
+Summary: 15 pass, 0 partial, 0 fail

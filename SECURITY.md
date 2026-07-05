@@ -1,16 +1,21 @@
-# Security Policy
+# Security Notes
 
-## Supported Versions
+RoundTable is designed as a local-first static PWA.
 
-The public repository tracks the current RoundTable source release.
+## Intentional Trust Boundaries
 
-## Reporting a Vulnerability
+- No backend service
+- No authentication layer
+- No model API calls
+- No browser automation
+- No scraping
+- No cloud database
+- No runtime fetch/XHR/WebSocket/EventSource/sendBeacon surfaces in app code
 
-Please report security concerns privately to the repository owner rather than
-opening a public issue with exploit details.
+User data is stored in the browser through the local storage adapter and can be exported manually by the operator.
 
-## Local-First Boundary
+## Sensitive Data Guidance
 
-RoundTable is designed as a local-first PWA. It has no backend, authentication
-system, AI API calls, scraping, or cloud sync. User workflow data is stored in
-the browser and should be exported regularly by the operator.
+Do not commit real project exports, private model responses, customer data, credentials, or `.env` files to this repository.
+
+Use demo data for screenshots, walkthroughs, and portfolio presentations.

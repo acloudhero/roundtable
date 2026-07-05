@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-07-05T14:16:00.697561Z",
+  "source_runtime": "/mnt/data",
+  "artifact_count": 9,
+  "included_artifacts": [
+    {
+      "folder": "00_transcript_context",
+      "title": "Available Chat Transcript PDF",
+      "phase": "Conversation-level provenance artifact",
+      "date": "2026-05-10 / generated in chat; copied into this reconstruction on 2026-07-05 runtime",
+      "status": "Available; partial by platform/runtime limitation",
+      "summary": "PDF transcript of the conversation content accessible to the runtime, with assistant messages left and user messages right. It is useful as provenance, but platform-truncated/skipped segments cannot be recovered verbatim.",
+      "file_keys": [
+        "transcript_pdf"
+      ]
+    },
+    {
+      "folder": "01_mrc_phase3_1_cleanup_changed_files",
+      "title": "MRC Phase 3.1 Cleanup Changed Files for Gemini",
+      "phase": "Phase 3.1 \u2014 cleanup patch after core round workflow",
+      "date": "2026-05-09 review cycle",
+      "status": "Available as changed-files bundle",
+      "summary": "Focused changed-files bundle used for Gemini review after Phase 3.1 cleanup. It captures the early transition from scaffold/demo workflow into read-only locked-round visibility, canonical-state editor sizing, and system-font hardening.",
+      "file_keys": [
+        "mrc_p31_zip"
+      ]
+    },
+    {
+      "folder": "02_mrc_phase4_review_files_and_review",
+      "title": "MRC Phase 4 Review Files and Gemini Review Packet",
+      "phase": "Phase 4 \u2014 mediator packet and decision loop refinement",
+      "date": "2026-05-09 review cycle",
+      "status": "Available as changed-files bundle plus review packet",
+      "summary": "Files and review packet documenting Phase 4 structured mediator synthesis, extraction, decision-loop draft transfer, and next-round prompt support.",
+      "file_keys": [
+        "mrc_p4_files_zip",
+        "mrc_p4_gemini_md"
+      ]
+    },
+    {
+      "folder": "03_mrc_phase5_1_durability_review",
+      "title": "MRC Phase 5.1 Gemini Review Packet",
+      "phase": "Phase 5.1 \u2014 export/import durability and recovery cleanup",
+      "date": "2026-05-09 review cycle",
+      "status": "Available as review packet only",
+      "summary": "Review packet for the durability gate: JSON import validation firewall, backup-before-import, recovery mode, Markdown export safety, dynamic tilde fencing, and unsupported/orphaned data behavior.",
+      "file_keys": [
+        "mrc_p51_gemini_md"
+      ]
+    },
+    {
+      "folder": "04_mrc_phase6_1_maintainability_review",
+      "title": "MRC Phase 6.1 Gemini Review Packet",
+      "phase": "Phase 6.1 \u2014 maintainability gate cleanup",
+      "date": "2026-05-09 review cycle",
+      "status": "Available as review packet only",
+      "summary": "Review packet for maintainability: chronological phase history cleanup, safe ID generation, schema-evolution documentation, maintainability documentation, and typed validation issues.",
+      "file_keys": [
+        "mrc_p61_gemini_md"
+      ]
+    },
+    {
+      "folder": "05_mrc_phase7a_1_migration_safety_review",
+      "title": "MRC Phase 7A.1 Gemini Review Packet",
+      "phase": "Phase 7A.1 \u2014 migration safety cleanup",
+      "date": "2026-05-09 review cycle",
+      "status": "Available as review packet only",
+      "summary": "Review packet for schema migration and import compatibility: future-schema rejection, explicit migration notices, validation code hardening, legacy payload support, and Gemini review packet export.",
+      "file_keys": [
+        "mrc_p7a1_gemini_md"
+      ]
+    },
+    {
+      "folder": "06_rt_v0_10_4_response_persistence_baseline",
+      "title": "RoundTable v0.10.4 Response Persistence / Aggregation Baseline",
+      "phase": "RT v0.10.4 \u2014 response persistence and aggregation hardening",
+      "date": "2026-05-10 review cycle",
+      "status": "Available as full package plus Gemini review packet",
+      "summary": "Approved baseline package that fixed the response persistence / aggregation race using functional AppState updaters, updateRoundFunctional, response draft flushes, and canonical mediator generation. This is the latest full code package available in this runtime.",
+      "file_keys": [
+        "rt_v104_zip",
+        "rt_v104_gemini_md"
+      ]
+    },
+    {
+      "folder": "07_rt_v0_10_5_mediator_extraction_review_only",
+      "title": "RoundTable v0.10.5 Mediator Extraction Review Packet",
+      "phase": "RT v0.10.5 \u2014 mediator extraction tolerance + state mutation cleanup",
+      "date": "2026-05-10 review cycle",
+      "status": "Review packet available; full v0.10.5 zip was referenced/uploaded in the conversation but is not present in the active runtime file set",
+      "summary": "Review packet documenting the approved v0.10.5 patch: line-based mediator extraction tolerant of heading variants, React purity cleanup in MediatorPanel, migration of remaining replaceRound call sites, and UI copy polish. The actual full package is listed as unavailable in the missing-artifacts register.",
+      "file_keys": [
+        "rt_v105_gemini_md"
+      ]
+    },
+    {
+      "folder": "08_operational_vite_screenshot",
+      "title": "Operational Vite Server Screenshot",
+      "phase": "Local operational setup context",
+      "date": "2026-05-10",
+      "status": "Available image artifact",
+      "summary": "Screenshot showing a Vite dev server running locally from a RoundTable folder and the user\u2019s local version directories. Useful as operational provenance for the local-first workflow.",
+      "file_keys": [
+        "vite_screenshot"
+      ]
+    }
+  ],
+  "missing_or_unavailable": [
+    {
+      "artifact": "Phase 0 product charter",
+      "note": "Prompt/plan content exists in conversation but no standalone artifact file is present in the active runtime."
+    },
+    {
+      "artifact": "Phase 1 architecture/UX blueprint",
+      "note": "Prompt/plan content exists in conversation but no standalone artifact file is present in the active runtime."
+    },
+    {
+      "artifact": "Phase 2 scaffold package",
+      "note": "Sonnet reported a 49-file scaffold package, but the package is not available in the active runtime."
+    },
+    {
+      "artifact": "Phase 3 full package",
+      "note": "Sonnet reported a Phase 3 package; no full package file is available in the active runtime."
+    },
+    {
+      "artifact": "Phase 4 full package",
+      "note": "Changed files and Gemini packet are available; final full package is not available here."
+    },
+    {
+      "artifact": "Phase 5 / 5.1 full packages",
+      "note": "Review packet is available; full packages are not available here."
+    },
+    {
+      "artifact": "Phase 6 / 6.1 full packages",
+      "note": "Review packet is available; full packages are not available here."
+    },
+    {
+      "artifact": "Phase 7A / 7A.1 full packages",
+      "note": "Review packet is available; full package is not available here."
+    },
+    {
+      "artifact": "Phase 7B package",
+      "note": "Phase 7B was reported unfinished/partial in conversation; no approved final package is present here."
+    },
+    {
+      "artifact": "RT v0.10.5 full package",
+      "note": "The conversation says a zip was uploaded and reviewed, but the active runtime file set contains only the Gemini review packet, not the full package zip."
+    },
+    {
+      "artifact": "Phase 8 / Phase 9 packages",
+      "note": "Not completed in the available conversation context."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Cloudflare Pages headers for RoundTable.
+#
+# Keep hashed build assets cacheable, but force revalidation for the
+# service worker, manifest, and HTML shell so PWA updates surface promptly.
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

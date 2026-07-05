@@ -29,11 +29,12 @@ conversion.
 > Workbox via `vite-plugin-pwa`, operator-prompted update banner,
 > opportunistic `navigator.storage.persist()`, mobile UX hardening
 > (safe-area insets, `viewport-fit=cover`, overscroll-behavior,
-> tap-highlight cleanup, 44 px touch-target floor), and a minimal
-> Netlify-friendly `netlify.toml`. See `CHECKPOINT_STATE_K.md` for
-> the full delivery report and `docs/PWA.md` for the operator
-> guide. **Hosted Netlify validation has not been performed.**
-> Checkpoint N (PWA-aware documentation expansion) remains.
+> tap-highlight cleanup, 44 px touch-target floor), and static-host
+> deployment preparation. See `CHECKPOINT_STATE_K.md` for the full
+> delivery report and `docs/PWA.md` for the operator guide.
+> Historical checkpoint K targeted Netlify; the current portfolio
+> package targets Cloudflare Pages. See
+> `docs/CLOUDFLARE_DEPLOYMENT.md`.
 
 ---
 
@@ -723,7 +724,7 @@ These should be resolved before Checkpoint J starts. Each has a
 recommended default but operator/owner judgment is the source of
 truth.
 
-1. **Deployment target.** GitHub Pages? Netlify? Vercel?
+1. **Deployment target.** Cloudflare Pages? GitHub Pages? Vercel?
    Self-hosted? Determines whether `start_url` / `scope` need
    non-default values. **Default recommendation:** any HTTPS host at
    path `./`; current `base: './'` covers any subpath. Confirm

@@ -1,0 +1,568 @@
+# RoundTable — Mediator Synthesis Packet
+
+---
+
+## Project
+**Name:** Podcast pipeline
+
+**Description:** 
+
+**Current Phase:** Planning
+
+**Round:** 3
+
+---
+
+## Canonical Project State
+
+## Canonical Project State
+
+**Stack:** (to be defined)
+
+**What exists:**
+- (none yet)
+
+**Constraints:**
+- Local-first, no API calls, manual copy/paste workflow
+
+**Open Questions:**
+- (none yet)
+
+
+## Round 1 Canonical State Update — 2026-05-11
+Project name: Podcast Pipeline
+
+Current phase: Planning → Phase 0 Product Charter
+
+What exists:
+- No repo yet
+- No stack locked yet
+- Prior architecture plan exists
+- RoundTable now exists as the coordination workflow
+- Round 1 has produced the initial restart decision
+
+Constraints:
+- Local-first
+- No required API calls for initial build
+- Manual copy/paste workflow acceptable
+- Cloud-native-shaped architecture
+- Observability-native from the beginning
+- OpenTelemetry is central but should remain decoupled through an adapter
+
+Accepted direction:
+Build a local-first, CLI-driven, observability-native podcast pipeline. The MVP seed is: one approved text in, one audio file out, one RSS item published, one trace showing the whole journey.
+
+Phase order:
+Phase 0 Product Charter → Phase 1 Architecture Baseline → Phase 2 Repo Scaffold + Local Dev → Phase 3 Thin Vertical Slice MVP.
+
+Key decisions:
+- Pipeline core language: Python, provisional.
+- Interface: CLI-first; no web UI for MVP.
+- TTS: swappable adapter boundary from day one.
+- First TTS candidate: Piper, pending Phase 1 spike.
+- Final podcast output: MP3 RSS enclosure; WAV allowed internally if needed.
+- Source licensing: MVP limited to CC0 and US public-domain texts only.
+- Every source requires a manifest with provenance, license, jurisdiction, hash, and approval fields.
+- Manual approval gates must be explicit pipeline stages/events.
+- Observability pattern: internal pipeline events first; OTel adapter maps events to traces, metrics, and logs.
+- Local telemetry backend: OpenTelemetry Collector + Jaeger.
+- Local-first implementation must preserve cloud-native migration boundaries.
+
+Major risk accepted:
+The hardest engineering problem is preserving trace context and observable causality across pipeline stage boundaries without tangling OTel directly into business logic.
+
+---
+
+## Round Instruction
+
+You are participating in the RoundTable for the Podcast Pipeline project.
+
+Project:
+Podcast Pipeline
+
+Current Phase:
+Phase 1 — Architecture Baseline
+
+Context:
+Phase 0 Product Charter has been accepted with Gemini critique refinements.
+
+Accepted direction:
+Build a local-first, CLI-driven, observability-native podcast pipeline.
+
+Accepted MVP seed:
+One approved text in.
+One audio file out.
+One RSS item published.
+One traceable journey showing the pipeline.
+
+Accepted refinements:
+- Use a local state store, preferably SQLite.
+- Use pipeline_run_id as the durable correlation key.
+- Use one connected trace where practical.
+- Use linked traces across manual approval boundaries when needed.
+- Do not implement an internal event bus in Phase 1.
+- Define an internal event model only.
+- Use direct stage calls with a shared PipelineContext for the first scaffold.
+- Use a lightweight telemetry adapter to map internal events/stage results to OTel.
+- Mock TTS and manual audio import must work before Piper is required.
+- MP3 is required for the Phase 3 vertical-slice gate, but Phase 2 may use WAV/mock audio while scaffolding.
+- Explicit CLI command comes before watched-folder automation.
+
+Task:
+Produce or critique the Phase 1 Architecture Baseline.
+
+Required output sections:
+1. Architecture summary
+2. Proposed repository structure
+3. Python package/module structure
+4. CLI command structure
+5. Local state store design
+6. Source manifest schema
+7. Inter-stage artifact format
+8. PipelineContext design
+9. Pipeline stage model
+10. Internal event model
+11. Telemetry adapter design
+12. Trace-context and linked-trace strategy
+13. TTS adapter interface
+14. RSS/audio output model
+15. Local HTTP serving model
+16. Local OTel Collector + Jaeger topology
+17. Environment/dependency strategy
+18. Data retention and cleanup model
+19. Future cloud migration mapping
+20. Major risks
+
+---
+
+## Participating Models
+- **GPT-5.5 Thinking** — Mediator / Architect / State Keeper [✓ Response included]
+- **Claude Opus 4.7** — Deep Implementation / Hardening [✓ Response included]
+- **Claude Sonnet 4.6** — Everyday Implementation [✓ Response included]
+- **Gemini 3 Thinking** — Independent Critic / Architecture Reviewer [✓ Response included]
+
+> ✓ All 4 non-excluded model responses collected.
+
+---
+
+# Model Responses for This Round
+
+## GPT-5.5 Thinking — Mediator / Architect / State Keeper
+
+**Vendor / Model:** OpenAI / gpt-5.5-thinking  
+**Status:** reviewed  
+**Pasted At:** 2026-05-11T06:26:23.230Z  
+**Body Length:** 11,041 characters
+
+~~~~markdown
+May 11, 2026 — 1:23 AM CT
+
+Executive Summary
+
+Phase 1 should lock a local-first architecture that is simple enough to scaffold, but structured enough to migrate later.
+
+The recommended baseline is:
+
+Python CLI pipeline
++ SQLite local state
++ file-based artifacts
++ shared PipelineContext
++ direct stage calls
++ internal event model
++ lightweight telemetry adapter
++ local OTel Collector + Jaeger
++ mock/manual TTS before Piper
++ MP3 required by Phase 3 vertical-slice gate
+
+The most important architectural rule:
+
+Build the pipeline as a local product first.
+Shape the boundaries so it can become distributed later.
+Do not simulate a distributed system before the first vertical slice works.
+
+Agreements
+
+The accepted architecture direction is:
+
+Local-first
+CLI-first
+Python pipeline core
+SQLite local state
+File-based artifacts
+No web UI for MVP
+No cloud APIs for MVP
+No watcher first
+No internal event bus in Phase 1
+Direct stage calls with shared PipelineContext
+pipeline_run_id as durable correlation key
+One connected trace where practical
+Linked traces across manual approval gates when needed
+Mock/manual TTS before Piper
+Local OTel Collector + Jaeger
+MP3 required by Phase 3
+
+The architectural shape should preserve future migration:
+
+SQLite → Postgres
+local files → object storage
+direct stage calls → queue-backed workers
+CLI approvals → API/UI approvals
+local OTel Collector → Collector gateway / vendor fan-out
+local HTTP serving → object storage + CDN
+
+Disagreements
+
+No blocking disagreement remains, but these tradeoffs are now explicit:
+
+Event model vs event bus:
+Use an internal event model now.
+Do not implement a real event bus yet.
+
+One trace vs linked traces:
+Use one trace where practical.
+Use linked traces across human approval boundaries.
+
+MP3 vs WAV:
+WAV/mock audio may be allowed during Phase 2 scaffolding.
+MP3 is required for Phase 3 vertical-slice acceptance.
+
+SQLite vs JSON:
+SQLite is the local state store.
+JSON remains appropriate for manifests and artifact sidecars.
+
+CLI vs watched folder:
+Explicit CLI command first.
+Watched-folder automation later.
+
+Risks
+
+Primary risks:
+
+1. Overbuilding cloud-native abstractions before the local pipeline works.
+2. Underbuilding state, causing manual approval gates to become unreliable.
+3. Tangling OTel directly into business logic.
+4. Python/Piper/ffmpeg dependency friction, especially on Windows.
+5. Treating a human-in-the-loop process as one impossible long-running span.
+6. RSS output failing because enclosure URL, MIME type, length, or GUID logic is incomplete.
+7. Manifest schema becoming compliance theater instead of useful provenance.
+8. TTS becoming the bottleneck before the pipeline architecture is proven.
+
+Open Questions
+
+Phase 1 must resolve:
+
+1. Exact repository structure.
+2. Exact Python package/module structure.
+3. Exact SQLite schema.
+4. Exact source manifest schema.
+5. Exact artifact manifest format.
+6. Exact PipelineContext fields.
+7. Exact internal event record shape.
+8. Single-trace vs linked-trace rules.
+9. TTS adapter contract.
+10. Mock/manual/Piper TTS sequence.
+11. MP3 dependency strategy.
+12. Local HTTP server behavior.
+13. OTel Collector + Jaeger topology.
+14. Cleanup and retention rules.
+15. Minimum supported local environment.
+
+Model-Specific Observations
+
+GPT-5.5 Thinking should own the architecture baseline, phase gates, canonical state, and final synthesis.
+
+Claude Opus 4.7 should be used to attack the hard parts: SQLite durability, artifact boundaries, trace linking, failure recovery, idempotency, and future distributed migration.
+
+Claude Sonnet 4.6 should assess whether the proposed structure can be scaffolded cleanly in Phase 2 without ambiguity.
+
+Gemini 3 Thinking should continue acting as the skeptical reviewer, especially against overengineering, OTel coupling, dependency friction, and fake cloud-native complexity.
+
+Recommended Decision
+
+Approve the following Phase 1 Architecture Baseline direction:
+
+Podcast Pipeline begins as a single-machine Python CLI pipeline.
+
+It uses:
+- SQLite for local state
+- file-based artifacts under runs/<pipeline_run_id>/
+- direct stage calls
+- shared PipelineContext
+- structured internal event records
+- lightweight telemetry adapter
+- local OTel Collector + Jaeger
+- mock/manual TTS before Piper
+- local HTTP serving for feed/audio validation
+
+Recommended repository structure:
+
+podcast-pipeline/
+  apps/
+    cli/
+  pipeline/
+    core/
+      context.py
+      events.py
+      artifacts.py
+      config.py
+      errors.py
+    stages/
+      validate_source.py
+      approve_text.py
+      generate_audio.py
+      approve_audio.py
+      publish_rss.py
+    adapters/
+      tts/
+        base.py
+        mock.py
+        manual.py
+        piper.py
+    telemetry/
+      adapter.py
+      otel.py
+    state/
+      sqlite.py
+      schema.sql
+    rss/
+      generator.py
+    audio/
+      metadata.py
+    http/
+      server.py
+  infra/
+    docker-compose/
+    otel/
+  docs/
+    product-charter.md
+    architecture-baseline.md
+    telemetry-map.md
+    phase-history.md
+    open-issues.md
+  examples/
+    input/
+    manifests/
+    audio/
+  tests/
+
+Recommended CLI commands:
+
+pipeline init
+pipeline validate --source input/story.txt --manifest input/story.meta.json
+pipeline run --source input/story.txt --manifest input/story.meta.json
+pipeline approve-text --run-id <id>
+pipeline approve-audio --run-id <id>
+pipeline status --run-id <id>
+pipeline serve
+pipeline clean --mode transient
+
+Recommended SQLite tables:
+
+pipeline_runs
+sources
+approvals
+artifacts
+stage_results
+telemetry_links
+
+Recommended pipeline stages:
+
+text_submitted
+source_validated
+text_approved
+audio_generated
+audio_approved
+rss_published
+failed
+
+Recommended local artifact shape:
+
+runs/<pipeline_run_id>/
+  source/
+  intermediate/
+  audio/
+  rss/
+  artifacts.json
+  events.jsonl
+
+Recommended telemetry principle:
+
+Pipeline logic emits structured stage results and event records.
+Telemetry adapter converts those records into OTel spans, span events, metrics, and structured logs.
+
+Decision Rationale
+
+This architecture gives the project enough structure to be real without letting it become architecture theater.
+
+SQLite is justified because manual approval gates require durable status, artifact paths, file hashes, and trace/link metadata.
+
+File-based artifacts are justified because they mirror future object storage without requiring cloud services.
+
+Direct stage calls are justified because a queue, event bus, or workflow engine would be premature before the first vertical slice.
+
+The PipelineContext pattern is justified because it carries the minimum shared execution state without turning every function into OTel boilerplate.
+
+Proposed Canonical State Update
+
+Project name:
+Podcast Pipeline
+
+Current phase:
+Phase 1 Architecture Baseline — Draft ready for model review
+
+Accepted Phase 1 architecture direction:
+- Python CLI pipeline
+- SQLite local state store
+- File-based artifacts
+- Direct stage calls
+- Shared PipelineContext
+- Internal event model only
+- No internal event bus in Phase 1
+- Lightweight telemetry adapter
+- pipeline_run_id as durable correlation key
+- Single connected trace where practical
+- Linked traces across manual gates when needed
+- Mock/manual TTS before Piper
+- MP3 required by Phase 3 vertical-slice gate
+- Local OTel Collector + Jaeger
+- Explicit CLI command before watched-folder automation
+
+Canonical correction:
+The MVP goal is one traceable journey, not necessarily one continuous long-running trace.
+
+Proposed Next Actions
+
+1. Send this Phase 1 Architecture Baseline to Opus, Sonnet, and Gemini.
+2. Ask Opus to attack state durability, trace linking, artifact boundaries, and future distribution risks.
+3. Ask Sonnet to verify scaffold feasibility and identify missing implementation details.
+4. Ask Gemini to challenge overengineering, dependency friction, OTel coupling, and cloud-native assumptions.
+5. Collect all model responses in RoundTable.
+6. Generate the final Phase 1 synthesis.
+7. Only after Phase 1 is accepted, create the Phase 2 scaffold prompt.
+
+Proposed Next Round Prompt
+
+You are participating in the RoundTable for the Podcast Pipeline project.
+
+Project:
+Podcast Pipeline
+
+Current Phase:
+Phase 1 — Architecture Baseline Review
+
+Context:
+Phase 0 Product Charter has been accepted. The current Phase 1 architecture proposal is a local-first Python CLI pipeline using SQLite, file-based artifacts, direct stage calls, PipelineContext, structured internal event records, a lightweight telemetry adapter, and local OTel Collector + Jaeger.
+
+Accepted MVP seed:
+One approved text in.
+One audio file out.
+One RSS item published.
+One traceable journey showing the pipeline.
+
+Proposed baseline:
+- Python CLI pipeline
+- SQLite local state
+- file-based artifacts under runs/<pipeline_run_id>/
+- direct stage calls
+- shared PipelineContext
+- internal event model only
+- no internal event bus in Phase 1
+- lightweight telemetry adapter
+- pipeline_run_id as durable correlation key
+- one connected trace where practical
+- linked traces across manual approval boundaries when needed
+- mock/manual TTS before Piper
+- MP3 required by Phase 3, WAV/mock allowed during Phase 2 scaffold
+- local OTel Collector + Jaeger
+- explicit CLI command before watched-folder automation
+
+Task:
+Review or critique the Phase 1 Architecture Baseline.
+
+Required output sections:
+1. Architecture summary
+2. Repository structure assessment
+3. Python package/module structure assessment
+4. CLI command structure assessment
+5. SQLite state store assessment
+6. Source manifest schema assessment
+7. Inter-stage artifact format assessment
+8. PipelineContext assessment
+9. Pipeline stage model assessment
+10. Internal event model assessment
+11. Telemetry adapter assessment
+12. Trace-context and linked-trace assessment
+13. TTS adapter assessment
+14. RSS/audio output assessment
+15. Local HTTP serving assessment
+16. OTel Collector + Jaeger topology assessment
+17. Environment/dependency strategy assessment
+18. Data retention and cleanup assessment
+19. Future cloud migration assessment
+20. Major risks
+21. Required changes before Phase 2
+
+Role instructions:
+- Claude Opus 4.7: focus on hard engineering risks, trace propagation, state durability, failure recovery, and future distributed migration.
+- Claude Sonnet 4.6: focus on scaffold feasibility, implementation clarity, file layout, CLI ergonomics, and missing details.
+- Gemini 3 Thinking: act as skeptical architecture reviewer. Challenge overengineering, OTel coupling, dependency friction, and cloud-native theater.
+
+Do not write implementation code yet.
+The user is the final decision-maker.
+
+Confidence / Caveats
+
+Confidence is high.
+
+Caveat:
+
+SQLite adds more structure than the absolute minimum, but it is justified by manual approvals, run status, artifact tracking, trace correlation, and future Postgres migration.
+
+Second caveat:
+
+The Phase 2 scaffold must stay disciplined. PipelineContext and structured event records are enough. A real event bus, watcher, queue, workflow engine, or cloud deployment remains premature.
+~~~~
+
+---
+
+## Claude Opus 4.7 — Deep Implementation / Hardening
+
+**Vendor / Model:** Anthropic / claude-opus-4-7  
+**Status:** reviewed  
+**Pasted At:** 2026-05-11T06:27:22.322Z  
+**Body Length:** 24,577 characters
+
+~~~~markdown
+Phase 1 Architecture Baseline — Deep Implementation Review
+Role: Claude Opus 4.7 — Deep Implementation / Hardening
+Before I respond: the "Required Output" section at the bottom of the role prompt is a code-implementation template (TypeScript error count, files changed, build result). This round is architecture authoring, not code execution — there is no repo yet, no TS to compile. I'm flagging that mismatch and proceeding with the architecture deliverable the task body actually requested. The "files changed / build result" template should be replaced for planning rounds, or carried only on implementation rounds.
+I'll author the 20 required sections from the implementation seat, weighted toward correctness, edge cases, and the things that will break first. Carryover items are labeled at the end.
+1. Architecture summary
+A single-process, CLI-driven Python pipeline that moves an approved text through deterministic stages (ingest → approve → synthesize → assemble → publish) to produce one MP3 and one RSS item, while emitting internal pipeline events that a thin telemetry adapter maps to OpenTelemetry traces, metrics, and logs.
+The architecture rests on five load-bearing decisions:
+pipeline_run_id is the durable correlation key, stored in SQLite and carried in every artifact, event, log record, and span attribute. Trace IDs are ephemeral; pipeline_run_id is not.
+Stages are plain function calls taking a shared PipelineContext, not an event bus. The event model is data, not transport.
+Artifacts on disk are the inter-stage contract, not in-memory objects. This is the single architectural decision that makes future cloud migration mechanical rather than a rewrite.
+The telemetry adapter is the only module that imports opentelemetry. All other modules emit framework-neutral internal events; the adapter translates. This preserves the "OTel decoupled through an adapter" constraint and makes the adapter swappable or stubbable.
+Manual approval is a real stage with persisted state, not a sleep-loop or a stdin prompt buried inside synthesis. Approvals create linked-trace boundaries because operator wall-clock time can be hours or days.
+Everything else is consequence.
+2. Proposed repository structure
+Code
+Two non-obvious choices worth defending:
+runs/<pipeline_run_id>/ as a self-contained directory. Mirrors the prefix-per-run pattern in S3/GCS. The cloud migration replaces runs/ with a bucket prefix and nothing else changes about the artifact contract.
+feed/ separate from runs/. Published artifacts are immutable once in the feed. Runs are working state. Mixing them produces deletion accidents.
+3. Python package/module structure
+Module-level responsibilities, with import direction rules (lower may not import upper):
+Code
+The hard rule that prevents tangling: events imports nothing internal, and adapters/telemetry is the only place where events meets opentelemetry. Any stage that imports opentelemetry directly is a bug.
+I'd recommend enforcing the import direction with import-linter from day one. The cost is 20 lines of config; the savings are real.
+4. CLI command structure
+python -m podcast_pipeline <command> with these commands for Phase 2/3:
+Code
+Design notes:
+Every command except serve and clean takes (or produces) a pipeline_run_id. That ID is the only argument that crosses the trace-context boundary.
+--tts mock must be a first-class option, not a hidden test flag. The charter requires mock TTS to work before Piper is required.
+Avoid a single podcast-pipeline run-end-to-end mega-command for Phase 1. It hides the approval gates, which are the architecturally interesting part.
+CLI framework: typer or click. typer gets you typed args and free --help with less ceremony; click is more battle-tested. Either is fine. I'd pick typer for Phase 2 and revisit if it gets in the way.
+5. Local state store design
+SQLite, single file at runs/

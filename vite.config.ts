@@ -12,8 +12,8 @@
 //   not auto-updating — see src/main.tsx and src/components/PwaUpdateBanner.tsx.
 //
 // base: './' is preserved so the build is portable to any static host
-// (Netlify is the first target; the relative-path output works at any
-// path prefix without code changes).
+// (Cloudflare Pages is the current portfolio target; the relative-path
+// output also works at any path prefix without code changes).
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -49,8 +49,8 @@ export default defineConfig({
           'copy/paste workflow for AI roundtables. No backend, no API, ' +
           'no automation.',
         // start_url and scope are relative so the PWA installs cleanly
-        // at any subpath (root on Netlify, /roundtable/ on a subpath
-        // host). The relative './' resolves to the manifest's URL.
+        // at any subpath (root on Cloudflare Pages, /roundtable/ on a
+        // subpath host). The relative './' resolves to the manifest's URL.
         start_url: './',
         scope: './',
         display: 'standalone',

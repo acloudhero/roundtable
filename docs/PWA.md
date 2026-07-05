@@ -4,7 +4,7 @@ RoundTable — v0.12.0 Checkpoint K — operator reference for the
 Progressive Web App build.
 
 This document covers how to run RoundTable locally, how to build it,
-how to preview the PWA locally, how to deploy to Netlify, what to
+how to preview the PWA locally, how to optionally deploy to Cloudflare Pages, what to
 expect on first install, how the offline app shell works, what the
 update banner does, and how the Phase 0 boundaries (no backend, no
 sync, no accounts) are preserved.
@@ -88,44 +88,49 @@ menu. iOS Safari supports "Add to Home Screen" from the Share
 Sheet. Firefox desktop does not currently surface an install
 affordance, but the SW + manifest still work for offline use.
 
-## Deploying to Netlify
+## Deploying to Cloudflare Pages
 
-The repository includes a minimal `netlify.toml` configured for
-static hosting:
+The current live demo is hosted at:
 
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
+```text
+https://rtrc.netlify.app/
 ```
 
-Plus a SPA-style fallback redirect and conservative
-`Cache-Control` headers for `/sw.js`, `/manifest.webmanifest`, and
-`/index.html` (must-revalidate) versus aggressive caching for
-`/assets/*` (immutable, one year — safe because the filenames are
-content-hashed).
+RoundTable can also be deployed to Cloudflare Pages later because `ericharrisportfolio.com` already runs through Cloudflare. An optional future Cloudflare target is:
 
-Steps:
+```text
+https://roundtable.ericharrisportfolio.com
+```
 
-1. Push the repo to a Git provider (GitHub / GitLab / Bitbucket).
-2. In Netlify, **New site from Git** → pick the repo.
-3. Netlify reads `netlify.toml` and auto-fills:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-4. Deploy. Netlify provisions HTTPS automatically.
+Use the Cloudflare Pages Git integration for an optional future Cloudflare deployment:
 
-That's the whole flow. No environment variables, no backend
-functions, no edge handlers, no DNS gymnastics.
+```text
+Framework preset: React (Vite) or None
+Build command: npm run build
+Build output directory: dist
+Root directory: /
+Node version: 20 or 22
+Environment variables: none required
+```
 
-**Hosted PWA validation has not been performed** as part of
-Checkpoint K. Once the site is live, run:
+The repository includes:
 
-- Chrome DevTools → Lighthouse → "Progressive Web App" audit.
-- Application tab → Manifest → confirm icons load.
-- Application tab → Service Workers → confirm sw.js is registered.
-- Application tab → Storage → confirm Persistent Storage is
-  granted (or check console for the persistence-request log
-  emitted by `src/components/PwaUpdateBanner.tsx`).
+- `wrangler.toml` — Cloudflare Pages project/output configuration
+- `public/_headers` — cache headers copied into `dist/_headers` at build time
+- `netlify.toml.legacy` — historical Netlify configuration reference only
+
+For a direct first smoke test without connecting GitHub, use Wrangler:
+
+```bash
+npm ci
+npm run verify
+npm run build
+npx wrangler login
+npx wrangler pages project create roundtable
+npx wrangler pages deploy dist --project-name roundtable
+```
+
+See [`CLOUDFLARE_DEPLOYMENT.md`](CLOUDFLARE_DEPLOYMENT.md) for the step-by-step publish path and smoke test.
 
 ## First-install behavior
 
@@ -221,7 +226,7 @@ surfaces in application code.** Specifically:
 - `navigator.storage.persist()` is a storage API, not a network
   API. It asks the browser to mark RoundTable's localStorage as
   durable; no data is transmitted.
-- The manifest is a static file served by the host (Netlify); the
+- The manifest is a static file served by the host (currently Netlify, or Cloudflare Pages if deployed there); the
   app never re-fetches it at runtime.
 
 The Phase 0 boundary holds: **no backend, no API, no automation,
@@ -242,7 +247,7 @@ byte-identical to v0.11.0:
   carries integrity hashes and provenance frontmatter.
 - The PWA does NOT sync state between installs. An installed PWA
   on a phone and an installed PWA on a laptop are separate
-  origins (well, the same origin if hosted on the same Netlify
+  origins (well, the same origin if hosted on the same static-host
   URL — but each browser maintains its own localStorage).
 
 Operators who use RoundTable on multiple devices should export
@@ -327,10 +332,10 @@ implementation:
    Operators on iOS see a `#0d0f11` background before the app
    loads, no logo. Custom splashes are per-device-resolution PNG
    files; deferred for v1.1.
-6. **Hosted Netlify validation has not been performed.** The
-   `netlify.toml` and operator instructions are correct to the
+6. **Hosted Cloudflare Pages validation has not been performed.** The
+   `wrangler.toml` and operator instructions are correct to the
    best of our knowledge but the actual deployment has not been
-   tested against the live Netlify build pipeline.
+   tested against the live Cloudflare Pages build pipeline.
 7. **localStorage quota still ~5 MB on iOS Safari.** The
    IndexedDB storage adapter (Checkpoint O in
    `docs/PWA_READINESS.md` § 17) is deferred. Operators who hit

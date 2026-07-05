@@ -454,11 +454,11 @@ Expected output ends with `Summary: 15 pass, 0 partial, 0 fail`.
 
 ---
 
-## v0.12.0 — PWA installability + Netlify hosting (Checkpoint K)
+## v0.12.0 — PWA installability + Cloudflare Pages hosting
 
 This section is the operator's manual verification list for the
 PWA implementation bundle delivered in Checkpoint K. It assumes
-the build artifacts have been deployed to Netlify (or another
+the build artifacts have been deployed to Cloudflare Pages (or another
 HTTPS-capable static host).
 
 **Pre-deploy checks** (local):
@@ -498,9 +498,9 @@ HTTPS-capable static host).
       `[RoundTable] navigator.storage.persist() → granted` (or
       `not granted`, depending on browser policy)
 
-**Hosted PWA verification** (after Netlify deploy):
+**Hosted PWA verification** (after Cloudflare Pages deploy):
 
-- [ ] Site loads at the HTTPS Netlify URL
+- [ ] Site loads at the HTTPS Cloudflare Pages URL
 - [ ] Lighthouse → Progressive Web App audit passes the
       installability criteria
 - [ ] Lighthouse → Best Practices reports no SW or manifest

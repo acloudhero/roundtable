@@ -1,0 +1,33 @@
+# MANIFEST.sha256
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `README.md` | 2658 | `1336baed8186499d0970a508a5b7ca44e290bcb22c871f2b68798b6eb574e0eb` |
+| `artifact_chain.json` | 7518 | `c12b304efc79e4b6388363397d59daf4c25385f7389e6e7f8ca11c7e6824afdb` |
+| `artifacts/00_transcript_context/README.md` | 902 | `9873b265cfc53e7ab4e8ac13a9a5c336be4fd6179081a3dda4486274edf63cb3` |
+| `artifacts/00_transcript_context/roundtable_chat_transcript_available.pdf` | 15722 | `eb7669e1c77d91b72edc81c9f718dea42e7c81f3de8a9249cb8b8b3b586c8220` |
+| `artifacts/01_mrc_phase3_1_cleanup_changed_files/README.md` | 963 | `0bf762b630ecc2d39293877017d583213268724925a8ff07c49d41b62f593073` |
+| `artifacts/01_mrc_phase3_1_cleanup_changed_files/mrc-phase3.1-changed-files-for-gemini.zip` | 23136 | `3e8e05fd6f483285551af05285b89b36f40bf2c40ebfb7728bcb496d82d4343b` |
+| `artifacts/01_mrc_phase3_1_cleanup_changed_files/mrc-phase3.1-changed-files-for-gemini_inventory.md` | 932 | `0964b8ec7f171c7ff2aea5ac576f1d721b16a8137f762fb03fc3ffc78ffe448b` |
+| `artifacts/02_mrc_phase4_review_files_and_review/README.md` | 1022 | `aedf47b403a673a3039676d2c3b67424ac153e543b39ab44835b8364227dfc39` |
+| `artifacts/02_mrc_phase4_review_files_and_review/mrc-phase4-gemini-review.md` | 76442 | `63ad9ef4a4e5754ef1f4d771b8181e95f1f165d4240daf076fc6484935744611` |
+| `artifacts/02_mrc_phase4_review_files_and_review/mrc-phase4-review-files-for-gemini.zip` | 24608 | `5d739dcb59507a78b4707d7b00477202c995303e8963517b2a9c25aaf8164faf` |
+| `artifacts/02_mrc_phase4_review_files_and_review/mrc-phase4-review-files-for-gemini_inventory.md` | 548 | `874d43564499c8c87ce7cc5715c45703323197b0cf803e8877429d1a443d00ae` |
+| `artifacts/03_mrc_phase5_1_durability_review/README.md` | 823 | `7e08c63cb6c7b09bf1b2b03873ded54c66e87b993bcb406874c9a4ee15a2167d` |
+| `artifacts/03_mrc_phase5_1_durability_review/mrc-phase5.1-gemini-review.md` | 45341 | `63b454a26906945068ece37370530218ced29883e711e13c82f90c9d8448290e` |
+| `artifacts/04_mrc_phase6_1_maintainability_review/README.md` | 799 | `3d9f001eacea6c8ba2c9cc7b3a9d3854d7473e066e02a379d3ee0434748da233` |
+| `artifacts/04_mrc_phase6_1_maintainability_review/mrc-phase6.1-gemini-review.md` | 20246 | `4007d95913475539a4790915005559616d3a187501f5f639d0f3bdb9845890f0` |
+| `artifacts/05_mrc_phase7a_1_migration_safety_review/README.md` | 813 | `6b453aab74d6e3c8e0bae37a5cba9107998b98824e1d21d9846912fadfdf873b` |
+| `artifacts/05_mrc_phase7a_1_migration_safety_review/mrc-phase7a1-gemini-review.md` | 26940 | `27c94046bf03e0aa1d19087a9525584483b40f9792c53251fbadad4c2f84647f` |
+| `artifacts/06_rt_v0_10_4_response_persistence_baseline/README.md` | 1103 | `3602a9ccebef0da0e079c78d9659f9a9d74b220bc05fa7ca7fda7e2bda3b20c4` |
+| `artifacts/06_rt_v0_10_4_response_persistence_baseline/rt-v104-gemini-review.md` | 6793 | `80c3191c80f8343b2c421d53f098e11e34336d3f00c0e623a0780f189046e65b` |
+| `artifacts/06_rt_v0_10_4_response_persistence_baseline/rt-v104.zip` | 210860 | `9160164bab85b42a98341d6037760d59c4df953bd622acb9aa8ff22e1fdda94a` |
+| `artifacts/06_rt_v0_10_4_response_persistence_baseline/rt-v104_inventory.md` | 3561 | `059267f70fff66391bacbf0257fcaf9cf0c3bf5493f66575363e4441386e8d5c` |
+| `artifacts/07_rt_v0_10_5_mediator_extraction_review_only/README.md` | 1071 | `6e5f32411eeebba62aecfdbc5e2f11285f8e9030801628907a9d42218bf24081` |
+| `artifacts/07_rt_v0_10_5_mediator_extraction_review_only/rt-v105-gemini-review.md` | 6445 | `69a02db53fb71d83221d87fa60858c1c423ee90120fb4ba33886487672812278` |
+| `artifacts/08_operational_vite_screenshot/README.md` | 741 | `bce5c74cd2b0b162f221f93238194d6a2a01752e9634c2e905eb8da0987c6bc9` |
+| `artifacts/08_operational_vite_screenshot/image.png` | 38972 | `470d8cf0ff95722d49b33bbfa498baa3321a67b80d6968cf024675ca8ed757d2` |
+| `docs/CHRONOLOGY.md` | 4539 | `c61677412085522e23acc740a72b2c94ba2158c0971decb9d12351ed24f319a5` |
+| `docs/CURRENT_BASELINE_SUMMARY.md` | 1418 | `53585948a0103081593c82ed4298e1f5d00cf1afbce8a7b0151f5dbe1fd04bc7` |
+| `docs/GITHUB_VISIBILITY_GUIDE.md` | 1455 | `cd300c3404a518672cc653d8cbe4deb47f21b76ce9b55a4cd335d696c0cf016b` |
+| `docs/MISSING_OR_UNAVAILABLE_ARTIFACTS.md` | 1627 | `152d62e13225121b7672fd21f765425a3091bc0d3fe13917eebe29981465cd63` |

@@ -1,0 +1,16 @@
+4e1c74b68dc3e4106df24ce0f085d025e780fc0a7183edbc881be4a3aa65ef58  00-podcast-pipeline-phase1-mediator-packet/PPscaffold.txt
+a8d52bce07d808355632fd2bb3ce456c252cb478e148bf0fb9d01c71fbefc072  01-roundtable-v105-baseline/rt-v105.zip
+8e08a58a1cd9f67e52cb86dbeaf2c7e7fb5e3f17daa84138db25fa5f110589b6  02-v011-markdown-handoff-feasibility/v0.11.0-markdown-handoff-feasibility.md
+f2cf7d38f70fe867de49616b5b951e20591779552f8385cee6d695defe1e919d  03-v110-checkpoint-a-foundation/rt-v110-checkpoint.zip
+41911e6dab0eb4b986518567fa7e1c1d2124c3fdd561ba005d2ef913920fa0b1  04-checkpoint-b-ui-shell/roundtable-v0.11.0-checkpoint-B-ui-shell.zip
+16f4362020fa1b26de181c3826ede15aa9348509eff8c7fb2744b47bc1a742b3  05-checkpoint-c-download-export/roundtable-v0.11.0-checkpoint-C-download-export.zip
+baa085c6e1816620be89510d1f7a5a431b67db5387c050acc8d29a1fd9d19ef5  06-checkpoint-c5-provenance-storage/roundtable-v0.11.0-checkpoint-C5-provenance-storage.zip
+f1b98af7b7697fbbfeca9964c7b30b089c9226d97dd5d30263fd62f473a81b34  07-checkpoint-d-upload-preview-rawnotes/roundtable-v0.11.0-checkpoint-D-upload-preview-rawnotes.zip
+a434b4c339aaf381725322185b356e67efa2b38503a6df274d873c1477cf9af4  08-checkpoint-e-mediator-synthesis-import/roundtable-v0.11.0-checkpoint-E-mediator-synthesis-import.zip
+59628413055d1fc8ca06465bfe736372279ced28e20b69b87511bc1eb5814f86  09-checkpoint-f-import-correctness/roundtable-v0.11.0-checkpoint-F-import-correctness.zip
+56e0a8d1eeef1c19f67f3d5dc3af24712ea2ab0d429334c3aad5a710fa740f17  10-checkpoint-g-model-response-import/roundtable-v0.11.0-checkpoint-G-model-response-import.zip
+a9632134a3660e92f376336c583434a9afb12e328d28f2a8c8bd5baf0a4bc439  11-checkpoint-h-remaining-structured-imports/roundtable-v0.11.0-checkpoint-H-remaining-structured-imports.zip
+9da0ad2c548631f6dd958eb3f118f8fd5b0b47c765009d179520361ba8698ffe  12-checkpoint-i-rc-hardening-docs/roundtable-v0.11.0-checkpoint-I-rc-hardening-docs.zip
+1c3d35db4cd297958165eb8811be6bd2dd346a1b7f994feed496be699d66e4f9  13-pwa-readiness-doc/roundtable-v0.11.0-pwa-readiness-doc.zip
+dc93f1258107e82e2cfac2712dd31ebb45711c7f790f99cb0759c66205b2f3bc  14-checkpoint-j-modal-system/roundtable-v0.12.0-checkpoint-J-modal-system.zip
+852ed9c002a84ce9f4cd27a0fc334ca9b704fb68310f8b9e32348f8ba3cf55b1  15-checkpoint-k-pwa-implementation/roundtable-v0.12.0-checkpoint-K-pwa-implementation-bundle.zip
