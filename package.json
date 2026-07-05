@@ -1,0 +1,28 @@
+{
+  "name": "roundtable",
+  "version": "0.12.0",
+  "description": "RoundTable — local-first manual-copy/paste coordination cockpit for multi-model AI workflows",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "acceptance:walk": "esbuild scripts/acceptance-walk.ts --bundle --platform=node --format=cjs --external:none --outfile=.tmp/acceptance-walk.cjs && node --experimental-global-webcrypto .tmp/acceptance-walk.cjs",
+    "verify": "npm run build && npm run acceptance:walk"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.4.5",
+    "vite": "^6.4.2",
+    "vite-plugin-pwa": "^1.3.0",
+    "workbox-window": "^7.4.1"
+  }
+}

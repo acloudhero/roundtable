@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      v0.12.0 Checkpoint K — viewport-fit=cover lets the layout extend
+      under iOS notches / dynamic island; safe-area-inset-* in app.css
+      then pads the header/tabs back into the visible area. Required for
+      installed PWA quality on notched iOS devices.
+    -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>RoundTable</title>
+    <!--
+      v0.12.0 Checkpoint K: fixed the duplicated "Local-first local-first"
+      typo from the v0.11.0 RC; description now matches package.json's
+      shorter copy. -->
+    <meta
+      name="description"
+      content="Local-first multi-model coordination cockpit for AI workflows. No backend, no API, no automation — manual copy/paste only."
+    />
+    <!-- ─── v0.12.0 Checkpoint K — PWA / mobile metadata ────────────────── -->
+    <!-- Theme color: matches --bg-base in src/styles/app.css. Used by
+         the Android Chrome status bar and OS UI accent. -->
+    <meta name="theme-color" content="#0d0f11" />
+    <!-- RoundTable is dark-only. Declaring this prevents iOS from
+         flashing a white background during initial paint. -->
+    <meta name="color-scheme" content="dark" />
+    <!-- Favicon + apple-touch-icon. Manifest is injected by
+         vite-plugin-pwa during build; the link below is the
+         fallback for environments that read static HTML directly. -->
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <!-- Apple-specific PWA hints. apple-mobile-web-app-capable is
+         legacy iOS standalone opt-in (newer iOS reads the manifest
+         instead, but the meta is still respected). -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RoundTable" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

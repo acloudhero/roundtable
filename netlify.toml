@@ -1,0 +1,60 @@
+# netlify.toml — RoundTable static PWA hosting.
+#
+# v0.12.0 Checkpoint K — first hosted deployment target.
+#
+# Scope:
+#   - Pure static site build (Vite output → dist/).
+#   - No Netlify Functions, no env vars, no edge handlers, no
+#     redirect logic that introduces server-side behavior.
+#   - This file makes deploys reproducible (publish dir + build
+#     command) and applies sensible cache headers for the precached
+#     PWA bundle. Nothing more.
+#
+# Local-first guarantee preserved:
+#   The hosted PWA still makes zero network requests at runtime to
+#   any RoundTable-owned service. Operators interact only with their
+#   local browser storage and the file system via the OS file picker.
+#   Netlify hosts the bytes; that is the limit of its role.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA-style fallback. RoundTable doesn't currently use client-side
+# routing, but if a deep link is ever shared (e.g. via a future tab
+# anchor), Netlify must serve the app shell rather than 404. The
+# service worker also relies on this fallback for offline navigation.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache the hashed bundle assets aggressively. Each build emits new
+# hashes, so the cache is automatically invalidated on deploy.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The service worker itself must NOT be cached aggressively, or
+# operators on the old version will never pick up the new SW. The
+# Workbox-generated SW already implements its own update logic;
+# we just need to keep the browser from holding the old sw.js.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Same rule for the manifest — must be revalidated on every visit so
+# manifest changes (icons, name, etc.) ship promptly.
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# index.html: must-revalidate so operators always see the latest
+# bundle hashes referenced by the most recent build.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
